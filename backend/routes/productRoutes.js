@@ -1,7 +1,7 @@
 import express from "express";
 import {
   createProducts,
-  func1Single,
+  deleteProduct,
   getAllProducts,
   getSingleProduct,
   updateProduct,
@@ -10,6 +10,6 @@ const router = express.Router();
 // routes
 router.route("/products").get(getAllProducts).post(createProducts);
 
-router.route("/product/:id").put(updateProduct).get(getSingleProduct);
+router.route("/product/:id").put(updateProduct).delete(deleteProduct).get(getSingleProduct);
 
 export default router;
