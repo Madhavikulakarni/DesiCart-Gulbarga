@@ -6,7 +6,7 @@ dotenv.config({ path: "backend/config/config.env" });
 connectMongoDatabase()
 // handle uncaught exception errors
 process.on('uncaughtException',(err)=>{
-   console.log(`Error: ${err.message}`)
+  console.log(`Error: ${err.message}`)
   console.log(`Server is shutting down, due to unhandled promise rejection`)
   process.exit(1)
 })
