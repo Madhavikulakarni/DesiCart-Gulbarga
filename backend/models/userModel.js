@@ -59,11 +59,11 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-// userSchema.methods.getJWTToken = function () {
-//   return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
-//     expiresIn: process.env.JWT_EXPIRE,
-//   });
-// };
+userSchema.methods.getJWTToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRE,
+  });
+};
 
 // Login - compare entered n password present in db
 userSchema.methods.verifyPassword = async function (userEnteredPassword) {
