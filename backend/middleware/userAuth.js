@@ -20,7 +20,6 @@ export const verifyUserAuth = handleAsyncError(async (req, res, next) => {
   try {
     //  Verify only if token exists and is valid
     const decodedData = jwt.verify(token, process.env.JWT_SECRET_KEY);
-    console.log(" Decoded Data:", decodedData);
 
     req.user = await User.findById(decodedData.id);
     if (!req.user) {
