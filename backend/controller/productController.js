@@ -2,10 +2,8 @@ import Product from "../models/productModel.js";
 import HandleError from "../utils/handleError.js";
 import handleAsyncError from "../middleware/handleAsyncError.js";
 import APIFunctionality from "../utils/apiFunctionality.js";
+
 // creating Products
-
-// http://localhost:8000/api/v1/products?keyword=top
-
 export const createProducts = handleAsyncError(async (req, res, next) => {
   req.body.user = req.user.id;
   console.log(req.user);
@@ -18,7 +16,7 @@ export const createProducts = handleAsyncError(async (req, res, next) => {
 
 // Get all products
 export const getAllProducts = handleAsyncError(async (req, res, next) => {
-  const resultPerPage = 2;
+  const resultPerPage = 4;
   const apiFeatures = new APIFunctionality(Product.find(), req.query)
     .search()
     .filter();
@@ -187,7 +185,7 @@ export const deleteReview = handleAsyncError(async (req, res, next) => {
 
 // Admin - Getting all products
 export const getAdminProducts = handleAsyncError(async (req, res, next) => {
-  const products = await Product.find(); 
+  const products = await Product.find();
   res.status(200).json({
     success: true,
     products,
